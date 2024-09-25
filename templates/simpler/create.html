@@ -1,0 +1,130 @@
+{% extends "simpler/base.html" %}
+
+{% block title %}Create Resume{% endblock %}
+
+{% block content %}
+
+    <div class="form-container">
+        <div style="padding: 1em">
+            <a href="{% url 'index' %}" class="baton">Back</a>
+        </div>
+        <h2>Create Your Resume</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="maket_id" value="{{ maket_id }}">
+            <div class="resume">
+                <div class="header">
+                    <div class="profile-image">
+                        <label for="photo-upload" class="photo-label">Выберите фото</label>
+                        {{ form.photo }}
+                    </div>
+
+                    <div class="name-title">
+                        <label>ФИО</label>
+                        <div class="fio-fields">
+                            <h1>{{ form.surname }}</h1>
+                            <h1>{{ form.name }}</h1>
+                            <h1>{{ form.patronymic }}</h1>
+                        </div>
+
+                        {{ form.position.label }}
+                        <h2>{{ form.position }}</h2>
+
+                        <p class="description">
+                            {{ form.description }}
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="main-content">
+                    <div class="left-column">
+                        <div class="section">
+                            <h2>ОБРАЗОВАНИЕ</h2>
+                            <p><strong>{{ form.education }}</strong><br>
+                                {{ form.education_description }}</p>
+
+                        </div>
+                        {{ formset.management_form }}
+                        <div id="education_form">
+                        </div>
+                        <div class="delete-list-education" style="display: none"></div>
+                        <div id="empty_form-education" style="display: none">
+                            <div id="{{ formset.empty_form.prefix }}-form">
+                                {{ formset.empty_form.id }}
+                                <div class="col-xs-12" style="padding-left: 0px;">
+                                    <div class="form-group">
+                                        
+                                        <div class="input-group">
+                                            {{ formset.empty_form.title }}
+                                            {{ formset.empty_form.description }}
+                                            <div class="input-group-btn">
+                                                <button onclick="delete_education(this.id)"
+                                                        id="{{ formset.empty_form.prefix }}"
+                                                        type="button" class="btn btn-default"><i
+                                                        class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="add-education"
+                                class="btn btn-success pull-right form-row-add-section-btn"
+                                type="button">Добавить
+                        </button>
+                        {#                        <div class="section">#}
+                        {#                            <h2>НАВЫКИ</h2>#}
+                        {#                            <ul>#}
+                        {#                                <li>{{ form.skills }}</li>#}
+                        {#                            </ul>#}
+                        {#                        </div>#}
+                        {#                    </div>#}
+                        {##}
+                        {#                    <div class="right-column">#}
+                        {#                        <div class="section">#}
+                        {#                            <h2>ОПЫТ РАБОТЫ</h2>#}
+                        {#                            <p><strong>{{ form.experience }}</strong></p>#}
+                        {#                            <ul>#}
+                        {#                                <li>{{ form.experience_description }}</li>#}
+                        {##}
+                        {#                            </ul>#}
+                        {#                        </div>#}
+                        {#                    </div>#}
+                    </div>
+                </div>
+                <button type="submit" class="btn">Download</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+{% endblock %}
+{% block page_js %}
+    <script>
+        
+        $('#add-education').click(function () {
+            console.log('324234324')
+            let form_idx = $('#id_education-TOTAL_FORMS').val();
+            $('#education_form').append($('#empty_form-education').html().replace(/__prefix__/g, form_idx));
+            $('#id_education-' + form_idx + '-title').val('Секция ' + (parseInt(form_idx) + 1));
+            $('#id_education-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        })
+
+        //delete SERVICE form
+        function delete_education(index) {
+            if (confirm('Удалить?')) {
+                $('.delete-list-education').append('<input type="hidden" value="on" name="' + index + '-DELETE" id="id_' + index + '-DELETE">');
+                $('#' + index + '-form').css('display', 'none');
+            } else {
+                return false
+            }
+
+        }
+
+    </script>
+{% endblock %}

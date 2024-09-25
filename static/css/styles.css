@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('/static/img/job.jpg') no-repeat center center fixed; /* Фоновое изображение */
+    background-size: cover; /* Обеспечивает покрытие всего экрана */
+    position: relative; /* Для абсолютного позиционирования дочерних элементов */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    position: relative; /* Позиционирование для наложенных элементов */
+    z-index: 1; /* Помещает контейнер поверх текстуры */
+}
+
+
+.baton {
+    padding: 10px 20px;
+    margin: 10px;
+    color: white;
+    background-color: rgba(0, 123, 255, 0.8); /* Полупрозрачный синий фон */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.baton:hover {
+    background-color: rgba(0, 123, 255, 1);
+}
+
+.form-container {
+    background: rgba(152, 152, 103, 0.9); /* Полупрозрачный белый фон */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 50em;
+    width: 100%; /* Добавьте ширину 100% для равномерного заполнения */
+    margin: 50px auto; /* Центрирует по вертикали */
+    text-align: center;
+}
+
+input, select, textarea {
+    width: 80%; /* Поля ввода с шириной 100% */
+    padding: 10px;
+    margin: 5px 0; /* Отступы между полями */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+.form-container p {
+    text-align: center; /* Центрирует текст */
+    margin: 0 0 10px; /* Убирает отступ сверху и добавляет отступ снизу */
+    font-weight: bold; /* Делаем текст жирным */
+    font-size: 18px; /* Размер шрифта можно настроить по желанию */
+}
+
+.carousel-item img {
+    height: 750px; /* Ограничиваем высоту изображений */
+    margin: 0 auto; /* Центрируем изображение */
+    padding-left: 400px;
+    padding-right: 400px;
+}
+
+
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    margin: 0;*/
+/*    padding: 20px;*/
+/*    background-color: #f0f0f0;*/
+/*}*/
+.resume {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.profile-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.name-title {
+    flex-grow: 1;
+    padding-left: 40px;
+}
+h1, h2 {
+    margin: 0;
+}
+.description {
+    margin-top: 20px;
+}
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+.left-column, .right-column {
+    width: 48%;
+}
+.section {
+    margin-bottom: 30px;
+}
+ul {
+    padding-left: 20px;
+}
+.contact {
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.fio-fields {
+    display: flex;
+    gap: 15px; /* Отступ между ФИО */
+    align-items: center;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+.description {
+    margin-top: 10px;
+}
+.profile-image {
+    width: 200px; /* Ширина рамки */
+    aspect-ratio: 4 / 3; /* Соотношение сторон 4:3 */
+    border: 2px dashed #ccc; /* Декоративная рамка */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #f9f9f9; /* Фон рамки */
+}
+
+.photo-label {
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+}
+
+.photo-upload {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}

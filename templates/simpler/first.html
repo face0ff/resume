@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ field1 }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .resume {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .name-title {
+            flex-grow: 1;
+            padding-left: 40px;
+        }
+        h1, h2 {
+            margin: 0;
+        }
+        .description {
+            margin-top: 20px;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        .left-column, .right-column {
+            width: 48%;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .contact {
+            margin-top: 30px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <div class="header">
+            <img src="{{ image_url }}" alt="" class="profile-image">
+            <div class="name-title">
+                <h1>{{ form.name }}</h1>
+                <h2>{{ form.surname }}</h2>
+                <p class="description">
+                    {{ field1 }}
+                </p>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <h2>ОБРАЗОВАНИЕ</h2>
+                    {% for form in form.educations.all %}
+                        {{ form.title }}
+                        {{ form.description }}
+                    {% endfor %}
+                    
+                </div>
+                
+                <div class="section">
+                    <h2>НАВЫКИ</h2>
+                    <ul>
+                        <li>{{ field1 }}</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="section">
+                    <h2>ОПЫТ РАБОТЫ</h2>
+                    <p><strong>{{ field1 }}</strong></p>
+                    <ul>
+                        <li>{{ field1 }}</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact">
+            <p>{{ field1 }}</p>
+            <p>{{ field1 }}</p>
+        </div>
+        
+        <p style="text-align: center;">{{ field1 }}</p>
+    </div>
+</body>
+</html>
